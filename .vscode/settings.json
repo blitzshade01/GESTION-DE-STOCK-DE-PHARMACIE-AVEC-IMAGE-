@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "README.txt"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

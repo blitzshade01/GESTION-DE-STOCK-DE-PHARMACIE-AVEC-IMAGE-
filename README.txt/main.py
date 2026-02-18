@@ -64,7 +64,7 @@ class GestionPharmacie:
         title_label = tk.Label(
             title_frame,
             text="Gestion de stock de Pharmacie ",
-            font=('Ariel', 20, 'bold'),
+            font=('Arial', 20, 'bold'),
             fg='white',
             bg=self.header_color
         )
@@ -131,7 +131,7 @@ class GestionPharmacie:
             text="Ajouter médicament",
             bg=self.button_color,
             fg='white',
-            font=('Ariel', 10, 'bold'),
+            font=('Arial', 10, 'bold'),
             command=self.ajouter_medicament
         )
         add_btn.grid(row=3, column=0,columnspan=2, pady=20)
@@ -147,7 +147,7 @@ class GestionPharmacie:
             form_frame,
             text=info_text,
             justify='left',
-            font=('Ariel',9),
+            font=('Arial',9),
             fg='gray'
         )
         info_label.grid(row=4, column=0, columnspan=2, pady=10)
@@ -214,6 +214,89 @@ class GestionPharmacie:
         self.med_entrees_combo = ttk.Combobox(entrees_frame, width=40)
         self.med_entrees_combo.grid(row=0, column=1, padx=10, pady=5)
 
+        # Quantité entrée
+        ttk.Label(entrees_frame, text="Quantité à ajouter:").grid(row=1, column=0, sticky='W', pady=5)
+        self.qte_entree_entry = ttk.Entry(entrees_frame, width=20)
+        self.qte_entree_entry.grid(row=1, column=1, sticky='w', padx=10, pady=5)
+
+        # Bouton entrée
+        entree_btn = tk.Button(
+            entrees_frame,
+            text="Ajouter au stock",
+            bg='green',
+            fg='white',
+            command=self.enregistrer_entree
+        )
+        entree_btn.grid(row=2, column=0, columnspan=2, pady=10)
+
+        # Frame pour les sorties
+        sorties_frame = ttk.LabelFrame(self.tab_mouvements, text="Enregistrer une sortie(vente)", padding=10)
+        sorties_frame.pack(fill='x' , padx=10, pady=10)
+
+        # Sélection médicament 
+        ttk.Label(sorties_frame, text="Medicament:").grid(row=0, column=0, sticky='w' , pady=5)
+        self.med_sorties_combo = ttk.Combobox(sorties_frame, width=40)
+        self.med_sorties.grid(row=0, column=1, sticky='w', padx=10, pady=5)
+
+        # Quantité sortie
+        ttk.Label(sorties_frame, text="Quantité à vendre:").grid(row=1, column=0, sticky='w' , pady=5)
+        self.qte_sorties_entry = ttk.Entry(sorties_frame, width=20)
+
+        # Bouton sortie
+        sortie_btn = tk.Button(
+            sorties_frame,
+            text="Vendre",
+            bg='orange',
+            fg='white',
+            comman=self.enregistrer_sortie
+        )
+        sortie_btn.grid(row=2, column=0, columnspan=2, pady=10)
+
+        # Mettre à jour les combobox
+        self.update_comboboxes()
+
+    def setup_tab_alertes(self):
+        """Configuration de l'onglet alertes"""
+        # Frame pour les paramètres
+        param_frame = ttk.LabelFrame(self.tab_alertes, text="paramèetres d'alerte", padding=10)
+        param_frame.pack(fill='x', padx=10, pady=10)
+
+        ttk.Label(param_frame, text="seuil d'alerte (quantité minimum):").grid(row=0, column=0, sticky='w', pady=5)
+        self.seuil_entry = ttk.Entry(param_frame, width=10)
+        self.seuil_entry.grid(row=0, column=1, padx=10, pady=5)
+        self.seuil_entry.insert(0, str(self.seuil_alerte))
+
+        seuil_btn = tk.Button(
+            param_frame,
+            text="Mettre à jour",
+            bg=self.button_color,
+            fg='white',
+            command=self.update_seuil
+        )
+        seuil_btn.grid(row=0, column=2, padx=10)
+
+        # Zone d'affichage des alertes
+        alert_frame = ttk.LabelFrame(self.tab_alertes, text="Alertes en cours", padding=10)
+        alert_frame.pack(fill='both', expand=True, padx=10, pady=10)
+
+        self.alert_text = scrolledtext.ScrolledText(
+            alert_frame,
+            height=15,
+            width=80,
+            font=('Arial', 10)
+        )
+        self.alert_text.pack(fill='both', expand=True)
+
+        # Bouton pour vérifier les alertes
+        check_btn = tk.Button(
+            self.tab_alertes,
+            text="Vérifier les alertes",
+            bg='red',
+            fg='white',
+            command=self.check_and_show_alerts
+        )
+        check_btn.pack(pady=10)
+
+    def ajouter_medicament(self):
+        """Ajouter un nouveau medicaments"""
         
-        
-    
