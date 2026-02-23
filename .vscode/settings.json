@@ -1,7 +1,20 @@
-{
-    "python.testing.pytestArgs": [
-        "README.txt"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
-}
+# Liste des médicaments (exemple)
+medicaments = [
+    {"nom": "Paracetamol", "prix": 2.5, "stock": 50},
+    {"nom": "Ibuprofen", "prix": 3.0, "stock": 30},
+    {"nom": "Amoxicilline", "prix": 5.0, "stock": 20}
+]
+
+def rechercher_medicament(nom):
+    for med in medicaments:
+        if med["nom"].lower() == nom.lower():
+            print("Médicament trouvé ✅")
+            print("Nom :", med["nom"])
+            print("Prix :", med["prix"])
+            print("Stock :", med["stock"])
+            return
+    print("Médicament non trouvé ❌")
+
+# Test
+nom_recherche = input("Entrer le nom du médicament : ")
+rechercher_medicament(nom_recherche)
