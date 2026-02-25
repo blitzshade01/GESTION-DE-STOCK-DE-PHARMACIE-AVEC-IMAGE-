@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 app=tk.Tk()
-app.title("GESTION DES STOCKS DESPRODUITSPHARMACEUTIQUE")
+app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
 app.configure(bg="lightgray")
 
