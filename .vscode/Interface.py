@@ -34,10 +34,23 @@ app=tk.Tk()
 app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
 app.configure(bg="lightgray")
+medicaments = [
+    {"nom": "Doliprane 500mg", "stock": 10},
+    {"nom": "Aspirine", "stock": 3},  # Stock faible pour test
+    {"nom": "Ibuprofène", "stock": 8}
+]
 
 def action():
     print("Action exécutée")
-    
+    verifier_stock()  # Vérifie le stock à chaque action
+
+def verifier_stock_medicament(med):
+    if med["stock"] < 5:
+        messagebox.showwarning(
+            "⚠ ALERTE STOCK FAIBLE",
+            f"Le médicament '{med['nom']}' a un stock faible ({med['stock']}) !"
+        )
+            
 menubar = tk.Menu(app)
 file_menu = tk.Menu(menubar, tearoff=0)
 file_menu.add_command(label="Ajouter", command=action)
