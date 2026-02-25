@@ -1,4 +1,3 @@
-import tkinter as tk
 from tkinter import ttk, messagebox
 import json
 import os
@@ -14,34 +13,43 @@ else:
         {"nom": "Doliprane 500mg", "qte": 45, "prix": 2.50},
         {"nom": "Doliprane 1000mg", "qte": 12, "prix": 3.20},
         {"nom": "Aspirine", "qte": 8, "prix":1.80},
-        {"nom": "Ibuprofène", "qte": 3, "prix": 4.50},  # Stock < 5, déclenchera l'alerte
-        {"nom": "Paracétamol", "qte": 2,"prix":2.00},   # Stock < 5, déclenchera l'alerte
+        {"nom": "Ibuprofène", "qte": 3, "prix": 4.50},
+        {"nom": "Paracétamol", "qte": 2,"prix":2.00},
     ]
     
 def sauver():
     with open(fichier, 'w') as f: json.dump(stock, f, indent=4)
     
 def verifier_alerte():
-    faibles = [m for m in stock if m['qte'] < 5]
+    faibles=[m for m in stock if m['qte']<5]
     if faibles:
-        msg = "Stock faible pour:\n" + "\n".join(f"- {m['nom']} (Quantité: {m['qte']})" for m in faibles)
+        msg="Stock faible pour:\n" + "\n".join(f"{m['nom']} (qte: {m['qte']})" for m in faibles)
         messagebox.showwarning("Alerte Stock Faible", msg)
-
 def rafraichir_liste():
     listbox.delete(0, tk.END)
     for med in stock:
         listbox.insert(tk.END, f"{med['nom']} - Stock: {med['qte']}")
-
-app = tk.Tk()
+app=tk.Tk()
 app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
 app.configure(bg="lightgray")
+medicaments = [
+    {"nom": "Doliprane 500mg", "stock": 10},
+    {"nom": "Aspirine", "stock": 3},  # Stock faible pour test
+    {"nom": "Ibuprofène", "stock": 8}
+]
 
-# CORRECTION 1 : On appelle la bonne fonction (verifier_alerte)
 def action():
     print("Action exécutée")
-    verifier_alerte()  
+    verifier_stock()  # Vérifie le stock à chaque action
 
+def verifier_stock_medicament(med):
+    if med["stock"] < 5:
+        messagebox.showwarning(
+            "⚠ ALERTE STOCK FAIBLE",
+            f"Le médicament '{med['nom']}' a un stock faible ({med['stock']}) !"
+        )
+            
 menubar = tk.Menu(app)
 file_menu = tk.Menu(menubar, tearoff=0)
 file_menu.add_command(label="Ajouter", command=action)
@@ -73,8 +81,9 @@ list_frame.pack(pady=10, padx=10, fill='both', expand=True)
 listbox = tk.Listbox(list_frame, height=6)
 listbox.pack(fill='both', expand=True, padx=5, pady=5)
 
-# CORRECTION 2 : On charge les vraies données dans la liste au lieu de texte en dur
-rafraichir_liste()
+for med in ["Doliprane 500mg - stock: 45", "Doliprane 1000mg - Stock: 12",
+            "Aspirine - Stock: 8", "Ibuproféne - Stock: 23"]:
+    listbox.insert(tk.END, med)
     
 vente_frame = tk.LabelFrame(app, text="Vente", bg='lightblue')
 vente_frame.pack(pady=5, padx=10, fill='x')
@@ -124,6 +133,7 @@ tk.Checkbutton(check_frame, text="Urgence", variable=check1,
                bg='lightgray').pack(side='left', padx=10)
 check2 = tk.IntVar()
 
+
 combo_frame = tk.Frame(app, bg='lightgray')
 combo_frame.pack(pady=5)
 
@@ -131,8 +141,5 @@ tk.Label(combo_frame, text="Trier par:", bg='lightgray').pack(side='left')
 combo = ttk.Combobox(combo_frame, values=["Nom", "Prix","Stock"], width=10)
 combo.set("Nom")
 combo.pack(side='left', padx=5)
-
-# CORRECTION 3 : Vérifie les alertes au lancement de l'application
-verifier_alerte()
 
 app.mainloop()
