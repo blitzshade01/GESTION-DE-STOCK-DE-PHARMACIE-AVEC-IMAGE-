@@ -25,5 +25,34 @@ root.geometry("900x450")
 charger_donnees()
 
 root.mainloop()
+def charger_donnees():
+    for item in table.get_children():
+        table.delete(item)
+
+    cursor.execute("SELECT * FROM medicaments")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        table.insert("", tk.END, values=row[1:])
+
+def ajouter_medicament():
+    nom = entry_nom.get()
+    prix = entry_prix.get()
+    quantite = entry_quantite.get()
+
+    if nom == "" or prix == "" or quantite == "":
+        messagebox.showwarning("Erreur", "Veuillez remplir tous les champs")
+        return
+
+    heure = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    cursor.execute("""
+        INSERT INTO medicaments(nom, prix, quantite, heure_ajout, heure_retrait)
+        VALUES(?,?,?,?,?)
+    """, (nom, prix, quantite, heure, ""))
+
+    conn.commit()
+    charger_donnees()
+
 
 
