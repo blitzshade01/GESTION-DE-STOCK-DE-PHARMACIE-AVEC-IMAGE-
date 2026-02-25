@@ -116,7 +116,7 @@ entry_retrait.grid(row=0, column=1)
 
 btn_remove=
 tk. entry(Fram retrait)
-entry retrait. grid(row=ø,Columna=1)
+entry retrait. grid(row=ø,Column=1)
 btn remove=tk.button(Fram retrait, texte="retirer",
 command=retirer médicament
-btn remove.grid(row=ø,Columna=2, padx=5)
+btn remove.grid(row=ø,Column=2, padx=5)
