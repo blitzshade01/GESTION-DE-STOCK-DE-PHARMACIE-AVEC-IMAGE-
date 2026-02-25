@@ -89,5 +89,23 @@ def retirer_medicament():
     conn.commit()
     charger_donnees()
 
+frame_form = tk.Frame(root)
+frame_form.pack(pady=5)
+
+tk.Label(frame_form, text="Nom").grid(row=0, column=0)
+entry_nom = tk.Entry(frame_form)
+entry_nom.grid(row=0, column=1)
+
+tk.Label(frame_form, text="Prix").grid(row=0, column=2)
+entry_prix = tk.Entry(frame_form)
+entry_prix.grid(row=0, column=3)
+
+tk.Label(frame_form, text="Quantité").grid(row=0, column=4)
+entry_quantite = tk.Entry(frame_form)
+entry_quantite.grid(row=0, column=5)
+
+btn_add = tk.Button(frame_form, text="Ajouter", bg="blue", command=ajouter_medicament)
+btn_add.grid(row=0, column=6, padx=5)
+
 
 
