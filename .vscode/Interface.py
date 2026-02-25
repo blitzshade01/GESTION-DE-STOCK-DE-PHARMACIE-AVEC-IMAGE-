@@ -1,6 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-
+from tkinter import ttk, messagebox
 app=tk.Tk()
 app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
