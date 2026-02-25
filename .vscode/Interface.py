@@ -1,5 +1,14 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+import json
+import os
+
+fichier = "pharmacie.json"
+stock = []
+panier = []
+
+if os.path.exists(fichier):
+    with open(fichier, 'r') as f: stock = json.load(f)
 app=tk.Tk()
 app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
@@ -90,8 +99,7 @@ check1 = tk.IntVar()
 tk.Checkbutton(check_frame, text="Urgence", variable=check1,
                bg='lightgray').pack(side='left', padx=10)
 check2 = tk.IntVar()
-tk.Checkbutton(check_frame, text="Ordonnance", variable=check2,
-               bg='lightgray').pack(side='left', padx=10)
+
 
 combo_frame = tk.Frame(app, bg='lightgray')
 combo_frame.pack(pady=5)
