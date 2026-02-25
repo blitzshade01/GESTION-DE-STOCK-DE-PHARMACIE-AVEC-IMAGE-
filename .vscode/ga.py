@@ -1,7 +1,7 @@
-tkinter as tk
+import tkinter as tk
 from tkinter import ttk, messagebox
 import sqlite3
-from import datetime import datetime
+from  datetime import datetime
 
 conn = sqlite3.connect("pharmacie.db")
 cursor = conn.cursor()
