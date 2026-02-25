@@ -3,9 +3,6 @@ from tkinter import ttk, messagebox
 import sqlite3
 from import datetime import datetime
 
-# -------------------------
-# Base de données
-# -------------------------
 conn = sqlite3.connect("pharmacie.db")
 cursor = conn.cursor()
 
