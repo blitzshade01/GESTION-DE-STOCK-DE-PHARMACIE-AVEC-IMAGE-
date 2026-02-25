@@ -120,3 +120,13 @@ entry retrait. grid(row=ø,Column=1)
 btn remove=tk.button(Fram retrait, texte="retirer",
 command=retirer médicament
 btn remove.grid(row=ø,Column=2, padx=5)
+#Tableau(treeview)
+Colonnes=("Non","prix","stock","Heure ajout","Heure retrait")
+table=ttk.treeview(root,columns=Colonnes,show="headings")
+for col in Colonnes:
+table.heading(col,texte=col)
+table.column(col,width=160)
+table.pack(expand=true,fill="both",pady=10)
+#Chargement initial
+Charger_donnees()
+root mainloop()
