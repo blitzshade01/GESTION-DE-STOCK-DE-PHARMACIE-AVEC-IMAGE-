@@ -53,6 +53,41 @@ def ajouter_medicament():
 
     conn.commit()
     charger_donnees()
+def retirer_medicament():
+    selected = table.focus()
+
+    if selected == "":
+        messagebox.showwarning("Erreur", "Sélectionnez un médicament")
+        return
+
+    valeur = table.item(selected, "values")
+    nom = valeur[0]
+    quantite_actuelle = int(valeur[2])
+
+    try:
+        qte_retrait = int(entry_retrait.get())
+    except:
+        messagebox.showwarning("Erreur", "Quantité invalide")
+        return
+
+    if qte_retrait <= 0:
+        return
+
+    if qte_retrait > quantite_actuelle:
+        messagebox.showwarning("Erreur", "Stock insuffisant")
+        return
+
+    nouvelle_qte = quantite_actuelle - qte_retrait
+    heure = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    cursor.execute("""
+        UPDATE medicaments
+        SET quantite=?, heure_retrait=?
+        WHERE nom=?
+    """, (nouvelle_qte, heure, nom))
+
+    conn.commit()
+    charger_donnees()
 
 
 
