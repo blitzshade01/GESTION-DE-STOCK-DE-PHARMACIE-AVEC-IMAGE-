@@ -35,7 +35,7 @@ def sauver():
 def rafraichir_liste():
     listbox.delete(0, tk.END)
     for med in stock:
-        couleur = "🔴" if med['qte'] < 5 else "✅"
+    couleur = "🔴" if med['qte'] < 5 else "✅"
         listbox.insert(tk.END, f"{couleur} {med['nom']} - Stock: {med['qte']} - {med['prix']}$")
 
 def action_vendre():
