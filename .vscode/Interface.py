@@ -23,15 +23,13 @@ def action():
     print("Action exécutée")
     verifier_stock()  # Vérifie le stock à chaque action
 
-
-def verifier_stock():
-    for med in medicaments:
-        if med["stock"] < 5:
-            messagebox.showwarning(
-                "⚠ ALERTE STOCK FAIBLE",
-                f"Le médicament '{med['nom']}' a un stock faible ({med['stock']}) !"
-            )
-    
+def verifier_stock_medicament(med):
+    if med["stock"] < 5:
+        messagebox.showwarning(
+            "⚠ ALERTE STOCK FAIBLE",
+            f"Le médicament '{med['nom']}' a un stock faible ({med['stock']}) !"
+        )
+            
 menubar = tk.Menu(app)
 file_menu = tk.Menu(menubar, tearoff=0)
 file_menu.add_command(label="Ajouter", command=action)
