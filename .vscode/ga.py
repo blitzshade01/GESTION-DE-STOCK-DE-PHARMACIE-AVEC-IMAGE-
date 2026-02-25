@@ -114,8 +114,9 @@ tk.Label(frame_retrait, text="Quantité à retirer").grid(row=0, column=0)
 entry_retrait = tk.Entry(frame_retrait)
 entry_retrait.grid(row=0, column=1)
 
-btn_remove = tk.Button(frame_retrait, text="Retirer", bg="red", command=retirer_medicament)
-btn_remove.grid(row=0, column=2, padx=5)
-
-
-
+btn_remove=
+tk. entry(Fram retrait)
+entry retrait. gris(row=ø,Columna=1)
+btn remove=tk.button(Fram retrait, texte="retirer",
+command=retirer médicament
+btn remove.grid(row=ø,Columna=2, padx=5)
