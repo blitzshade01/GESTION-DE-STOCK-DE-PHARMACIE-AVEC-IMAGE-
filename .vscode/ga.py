@@ -88,7 +88,7 @@ def retirer_medicament():
 
     conn.commit()
     charger_donnees()
-
+#retrait
 frame_form = tk.Frame(root)
 frame_form.pack(pady=5)
 
