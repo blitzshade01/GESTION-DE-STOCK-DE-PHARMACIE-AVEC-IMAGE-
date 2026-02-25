@@ -1,6 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-
+from tkinter import ttk, messagebox
 app=tk.Tk()
 app.title("GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE")
 app.geometry("800x500")
@@ -16,7 +15,7 @@ file_menu.add_command(label="Quitter", command=app.quit)
 menubar.add_cascade(label="Fichier", menu=file_menu)
 app.config(menu=menubar)
 
-tk.Label(app, text="GESTION DES STOCKS DES PRODUITS PHARMACEUTIQUE", font=("Arial", 16, "bold"),
+tk.Label(app, text="GESTION PHARMACIE", font=("Arial", 16, "bold"),
          bg='lightgray').pack(pady=5)
 
 rech_frame = tk.Frame(app, bg='lightgray')
