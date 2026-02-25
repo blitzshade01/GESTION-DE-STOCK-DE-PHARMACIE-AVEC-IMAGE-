@@ -12,7 +12,7 @@ def rechercher_medicament(nom):
             print("Nom :", med["nom"])
             print("Prix :", med["prix"])
             print("Stock :", med["stock"])
-            return
+        else
     print("Médicament non trouvé ❌")
 
 # Test
