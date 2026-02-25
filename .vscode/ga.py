@@ -1,4 +1,4 @@
-import tkinter as tk
+yimport tkinter as tk
 from tkinter import ttk, messagebox
 import sqlite3
 from  datetime import datetime
@@ -6,7 +6,7 @@ from  datetime import datetime
 conn = sqlite3.connect("pharmacie.db")
 cursor = conn.cursor()
 
-cursor.execute("""
+cursor.execute(""" 
 CREATE TABLE IF NOT EXISTS medicaments(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nom TEXT,
@@ -106,6 +106,16 @@ entry_quantite.grid(row=0, column=5)
 
 btn_add = tk.Button(frame_form, text="Ajouter", bg="blue", command=ajouter_medicament)
 btn_add.grid(row=0, column=6, padx=5)
+
+frame_retrait = tk.Frame(root)
+frame_retrait.pack(pady=5)
+
+tk.Label(frame_retrait, text="Quantité à retirer").grid(row=0, column=0)
+entry_retrait = tk.Entry(frame_retrait)
+entry_retrait.grid(row=0, column=1)
+
+btn_remove = tk.Button(frame_retrait, text="Retirer", bg="red", command=retirer_medicament)
+btn_remove.grid(row=0, column=2, padx=5)
 
 
 
