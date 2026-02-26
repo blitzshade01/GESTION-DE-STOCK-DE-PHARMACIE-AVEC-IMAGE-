@@ -24,7 +24,7 @@ root.geometry("900x450")
 
 charger_donnees()
 
-root.mainloop()
+
 def charger_donnees():
     for item in table.get_children():
         table.delete(item)
@@ -120,3 +120,17 @@ entry retrait. grid(row=ø,Column=1)
 btn remove=tk.button(Fram retrait, texte="retirer",
 command=retirer médicament
 btn remove.grid(row=ø,Column=2, padx=5)
+
+colonnes = ("Nom", "Prix", "Stock", "Heure ajout", "Heure retrait")
+
+table = ttk.Treeview(root, columns=colonnes, show="headings")
+
+for col in colonnes:
+    table.heading(col, text=col)
+    table.column(col, width=160)
+
+table.pack(expand=True, fill="both", pady=10)
+
+
+charger_donnees()
+root.mainloop()
