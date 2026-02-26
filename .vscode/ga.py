@@ -18,9 +18,10 @@ CREATE TABLE IF NOT EXISTS medicaments(
 """)
 conn.commit()
 
-root = tk.Tk()
-root.title("Gestion des stocks - Pharmacie")
-root.geometry("900x450")
+salim = tk.Tk()
+salim.title("Gestion des stocks - Pharmacie")
+salim.geometry("900x450")
+salim.configure(bg="red")
 
 def charger_donnees():
     for item in table.get_children():
@@ -141,5 +142,5 @@ def verifier_stock():
 
 charger_donnees()
 
-root.mainloop()
+salim.mainloop()
 
