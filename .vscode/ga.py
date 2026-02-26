@@ -31,6 +31,7 @@ def charger_donnees():
 
     for row in rows:
         table.insert("", tk.END, values=row[1:])
+    verifier_stock
 
 def ajouter_medicament():
     nom = entry_nom.get()
