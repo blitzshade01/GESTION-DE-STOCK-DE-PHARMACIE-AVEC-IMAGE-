@@ -1,5 +1,5 @@
 medicaments = [
-    {"nom": "Paracetamol", "prix": 2.5, "stock": 50},
+    {"nom": "Paracetamol", "prix": 2.6, "stock": 50},
     {"nom": "Ibuprofen", "prix": 3.0, "stock": 30},
     {"nom": "Amoxicilline", "prix": 5.0, "stock": 20}
 ]
