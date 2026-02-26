@@ -125,6 +125,19 @@ for col in colonnes:
 
 table.pack(expand=True, fill="both", pady=10)
 
+def verifier_stock():
+    cursor.execute("""
+        SELECT nom, quatite
+        FROM medicaments
+        WHERE quantite < 10 AND quantite > 0
+        """)
+    if resultats:
+        message=""
+        for nom,qte in resultats:
+            message += f"{nom}:reste{qte}\n"
+
+        messagebox.showwarning("Alerte stock faible", "Les medicament suivants sont presque epuise : \n\n" + message)
+
 charger_donnees()
 
 root.mainloop()
