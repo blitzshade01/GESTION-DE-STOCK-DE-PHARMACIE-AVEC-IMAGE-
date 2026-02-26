@@ -104,7 +104,7 @@ tk.Label(frame_form, text="Quantité").grid(row=0, column=4)
 entry_quantite = tk.Entry(frame_form)
 entry_quantite.grid(row=0, column=5)
 
-btn_add = tk.Button(frame_form, text="Ajouter", command=ajouter_medicament)
+btn_add = tk.Button(frame_form, text="Ajouter",bg="blue", command=ajouter_medicament)
 btn_add.grid(row=0, column=6, padx=5)
 
 frame_retrait = tk.Frame(salim)
@@ -114,7 +114,7 @@ tk.Label(frame_retrait, text="Quantité à retirer").grid(row=0, column=0)
 entry_retrait = tk.Entry(frame_retrait)
 entry_retrait.grid(row=0, column=1)
 
-btn_remove = tk.Button(frame_retrait, text="Retirer", command=retirer_medicament)
+btn_remove = tk.Button(frame_retrait, text="Retirer",bg="orange" command=retirer_medicament)
 btn_remove.grid(row=0, column=2, padx=5)
 
 colonnes = ("Nom", "Prix", "Stock", "Heure ajout", "Heure retrait")
