@@ -1,3 +1,9 @@
+medicaments = [
+    {"nom": "Paracetamol", "prix": 2.5, "stock": 50},
+    {"nom": "Ibuprofen", "prix": 3.0, "stock": 30},
+    {"nom": "Amoxicilline", "prix": 5.0, "stock": 20}
+]
+
 def rechercher_medicament(nom):
     for med in medicaments:
         if med["nom"].lower() == nom.lower():
@@ -9,7 +15,8 @@ nom_recherche = input("Entrer le nom du médicament : ")
 resultat = rechercher_medicament(nom_recherche)
 
 if resultat:
-    print("Médicament trouvé ✅")
-    print(resultat)
+    print("Médicament trouvé")
+    print("Nom :", resultat["nom"])
+    print("Stock :", resultat["stock"])
 else:
-    print("Médicament non trouvé ❌")
+    print("Médicament introuvable")
