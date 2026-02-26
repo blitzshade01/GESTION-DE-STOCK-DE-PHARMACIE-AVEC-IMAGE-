@@ -89,7 +89,7 @@ def retirer_medicament():
     conn.commit()
     charger_donnees()
 
-frame_form = tk.Frame(root)
+frame_form = tk.Frame(salim)
 frame_form.pack(pady=5)
 
 tk.Label(frame_form, text="Nom").grid(row=0, column=0)
@@ -107,7 +107,7 @@ entry_quantite.grid(row=0, column=5)
 btn_add = tk.Button(frame_form, text="Ajouter", command=ajouter_medicament)
 btn_add.grid(row=0, column=6, padx=5)
 
-frame_retrait = tk.Frame(root)
+frame_retrait = tk.Frame(salim)
 frame_retrait.pack(pady=5)
 
 tk.Label(frame_retrait, text="Quantité à retirer").grid(row=0, column=0)
@@ -119,7 +119,7 @@ btn_remove.grid(row=0, column=2, padx=5)
 
 colonnes = ("Nom", "Prix", "Stock", "Heure ajout", "Heure retrait")
 
-table = ttk.Treeview(root, columns=colonnes, show="headings")
+table = ttk.Treeview(salim, columns=colonnes, show="headings")
 
 for col in colonnes:
     table.heading(col, text=col)
